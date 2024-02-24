@@ -49,7 +49,7 @@ Or you can manually install according to the following steps (If you have alread
 
 ### 3. Run the tool
 - Run Tiktok Bot.cmd
-#### or
+#### or run this command
 ```bash
   python Tiktok.py
 ```
