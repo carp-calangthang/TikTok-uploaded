@@ -67,4 +67,4 @@ Or you can manually install according to the following steps (If you have alread
 
 # Authors
 - [@carp](https://github.com/carp-calangthang)
-- [@fỉ](https://github.com/firetofficial)
+- [@firet](https://github.com/firetofficial)
