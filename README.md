@@ -1,6 +1,8 @@
 # TikTok Uploaded 🎵
 Automatic tool for bulk uploading videos to TikTok. <b> Please do not commercialize in any form! </b>
-![image](https://github.com/carp-calangthang/TikTok-uploaded/assets/90557694/4e4f76e8-7334-48fc-98ad-79a3128094a0)
+
+![image](https://github.com/carp-calangthang/TikTok-uploaded/assets/90557694/0c5141b3-38da-4a82-a0d1-a971350b14bd)
+
 
 # Technologies Used 🚀
 - Language: Python <br>
@@ -62,3 +64,7 @@ Or you can manually install according to the following steps (If you have alread
 - <a href="https://t.me/it_is_daijobu" target="blank"><img align="center" src="https://raw.githubusercontent.com/svg-image-stograge/svg-stograge/main/telegram.svg" alt="https://t.me/it_is_daijobu" height="30" width="40" /></a>
 - <a href="https://www.facebook.com/cacodelinhtinh/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg" alt="https://www.facebook.com/cacodelinhtinh/" height="30" width="40" /></a>
 - Email: nguyentrananhkhoa.wf@gmail.com
+
+# Authors
+- [@carp](https://github.com/carp-calangthang)
+- [@fỉ](https://github.com/firetofficial)
