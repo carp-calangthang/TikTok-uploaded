@@ -1,0 +1,5 @@
+173.211.0.8:6501:htcmedie:htcmediapre
+161.0.70.5:5594:htcmedie:htcmediapre
+38.154.199.67:5221:htcmedie:htcmediapre
+23.247.7.133:5806:htcmedie:htcmediapre
+104.239.124.29:6307:htcmedie:htcmediapre
