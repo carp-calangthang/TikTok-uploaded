@@ -1,18 +1,16 @@
 # TikTok Uploaded 🎵
-This is a bot that spams comments based on keywords found in articles on Facebook. The bot is written in Python using Selenium.
+Automatic tool for bulk uploading videos to TikTok.
 
 # Technologies Used 🚀
 - Language: Python <br>
 - Library: Selenium <br>
 
 # Features
+- Automatically upload bulk videos to TikTok
+- Login with cookies
 
-- Search for articles based on keywords
-- Automatically comment on posts
-- Comment with an image
-
-# Download
-
+## 💰 You can help me by Donating
+  [![BuyMeACoffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/calangthang) 
 
 # Installation
 
@@ -22,7 +20,7 @@ Install <a href="https://www.python.org/downloads/"> python </a> (Recommend pyth
 ### Clone the Repository 
 
 ```bash
-  git clone https://github.com/carp-calangthang/bot-spam.git
+  https://github.com/carp-calangthang/TikTok-uploaded.git
 ```
 
 ### Install requirements.txt
@@ -34,32 +32,30 @@ Install <a href="https://www.python.org/downloads/"> python </a> (Recommend pyth
 ### Run the bot
 
 ```bash
-  python main.py
+  python Tiktok.py
 ```
 #### or
 ```bash
-  Run start.cmd
+  Run Tiktok Bot.cmd
 ```
     
 # Documentation
 
 ### 1. Configure the tool
-- Add Your Cookie to <b>cookies.txt</b> in <b>Data Folder</b>
+- Add Your Cookie to <b>cookies.txt</b> in <b>data Folder</b>
 - Cookies should be in the following format:
 ```bash
   datr=63123ZPAMrVwPPSWSlqUj; sb=6UBwZZ31230XlKQrZlMcZ;c_user=100033620200981; xs=46%3ACTqqEFxq1Wen5g%3A2%3A1701855469%3A-1%3A6374; fr=05gqqiRxjQCTCYbVC.AWX44l5yBg0Cui_drY-Pkw1RduA.BlcEDp.dg.AAA.0.0.BlcEDx.AWXqjFYCVY4; wd=1280x842
 ```
-### 2. Add your image
-- Add your image in to <b>imgaes folder</b>
 
-### 3. Add your comment content
-- Add your comment content to the <b>comment.txt</b> file
+### 2. Add proxy
+- Add your proxy to the <b>proxies.txt</b> file
 
-### 4. Run the tool
-- Run start.cmd
+### 3. Run the tool
+- Run Tiktok Bot.cmd
 #### or
 ```bash
-  python main.py
+  python Tiktok.py
 ```
 # Authors
 
