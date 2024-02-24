@@ -20,7 +20,7 @@ Automatic tool for bulk uploading videos to TikTok. <b> Please do not commercial
 ## Clone the Repository 
 
 ```bash
-  https://github.com/carp-calangthang/TikTok-uploaded.git
+  git clone https://github.com/carp-calangthang/TikTok-uploaded.git
 ```
 ## Automatic Installation:
 ```bash
