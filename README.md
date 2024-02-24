@@ -9,12 +9,19 @@ Automatic tool for bulk uploading videos to TikTok.
 - Automatically upload bulk videos to TikTok
 - Login with cookies
 
-## 💰 You can help me by Donating
+# 💰 You can help me by Donating
   [![BuyMeACoffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/calangthang) 
+
+# Automatic Installation:
+```bash
+  Run setup.cmd
+```
+### Or you can manually install according to the following steps (If you have already run setup.cmd, please skip the Installation step below)
 
 # Installation
 
-Install <a href="https://www.python.org/downloads/"> python </a> (Recommend python <a href="https://www.python.org/downloads/release/python-31013/"> 3.10.xx </a>)
+### Install Python
+Install <a href="https://www.python.org/downloads/"> python </a> <p> (Recommend python <a href="https://www.python.org/downloads/release/python-31013/"> 3.10.xx </a>) </p>
 <br>
 
 ### Clone the Repository 
@@ -23,10 +30,10 @@ Install <a href="https://www.python.org/downloads/"> python </a> (Recommend pyth
   https://github.com/carp-calangthang/TikTok-uploaded.git
 ```
 
-### Install requirements.txt
-
+### Installation Script
+#### Manual setup
 ```bash
-  pip install requirements.txt
+  pip install -r requirements.txt
 ```
 
 ### Run the bot
