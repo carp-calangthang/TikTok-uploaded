@@ -1,5 +1,5 @@
 # TikTok Uploaded 🎵
-Automatic tool for bulk uploading videos to TikTok.
+Automatic tool for bulk uploading videos to TikTok. <b> Please do not commercialize in any form! </b>
 
 # Technologies Used 🚀
 - Language: Python <br>
@@ -28,24 +28,14 @@ Or you can manually install according to the following steps (If you have alread
 ## Manual setup
 
 ### Install Python
-Install <a href="https://www.python.org/downloads/"> python </a> <p> (Recommend python <a href="https://www.python.org/downloads/release/python-31013/"> 3.10.xx </a>) </p>
+- Install <a href="https://www.python.org/downloads/"> python </a> <p> (Recommend python <a href="https://www.python.org/downloads/release/python-31013/"> 3.10.xx </a>) </p>
 
 ### Install requirements.txt
 ```bash
   pip install -r requirements.txt
 ```
-
-# Run the bot
-
-```bash
-  python Tiktok.py
-```
-#### or
-```bash
-  Run Tiktok Bot.cmd
-```
     
-# Documentation
+# How to run this tool?
 
 ### 1. Configure the tool
 - Add Your Cookie to <b>cookies.txt</b> in <b>data Folder</b>
