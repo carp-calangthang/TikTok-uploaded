@@ -10,7 +10,7 @@ Automatic tool for bulk uploading videos to TikTok. <b> Please do not commercial
 
 # Features
 - Automatically upload bulk videos to TikTok
-- Login with cookies
+- Login with ssid
 
 # 💰 You can help me by Donating
   [![BuyMeACoffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/calangthang) 
