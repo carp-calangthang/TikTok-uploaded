@@ -1,7 +1,7 @@
 from colorama import Fore, Style
 import os
 
-class load_cookie:
+class load_ssid:
     def __init__(self):
         self.adminNoiti = Fore.CYAN + "Admin: "
         self.systemNoiti = Fore.GREEN + "System: "
@@ -9,11 +9,11 @@ class load_cookie:
         self.warning = Fore.YELLOW + "Warn: "
         self.error = Fore.RED + "Error: "
     
-    def getCookie(self):
+    def getSSid(self):
         
         script_path = os.path.abspath(__file__) 
         src_directory = os.path.dirname(script_path)
-        cookiePath = os.path.join(src_directory, '..', 'data', 'cookies.txt')
+        cookiePath = os.path.join(src_directory, '..', 'data', 'ssid.txt')
 
         with open(cookiePath, "r") as cks:
             cookies = cks.readlines()

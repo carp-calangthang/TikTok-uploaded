@@ -18,45 +18,36 @@ class upload_videos:
         self.warning = Fore.YELLOW + "Warn: "   
         self.error = Fore.RED + "Error: "
         
-    def run_upload_videos(self, cookies, caption, wait_time, proxy, browser_name):
+    def run_upload_videos(self, ssid, caption, wait_time, browser_name):
         
         options = webdriver.FirefoxOptions()
         
-        seleniumwire_options = {
-            'proxy': {
-                'http': f'http://{proxy}',
-                'verify_ssl': False,
-            }
-        }
-        
-        options.add_argument('--headless')
+        #options.add_argument('--headless')
         options.add_argument('--lang=en')
-        driver = webdriver.Firefox(options=options) #seleniumwire_options=seleniumwire_options
+        driver = webdriver.Firefox(options=options)
             
         video_files = get_video_files()
-        
-        url = "https://www.tiktok.com/login"
-        driver.get(url)
-        driver.refresh()
+        print(video_files)
         
         while video_files:
             
+            session_id = {'name': 'sessionid', 'value': ssid}
+            
             url = "https://www.tiktok.com/login"
             driver.get(url)
-            driver.refresh()
             
             try:
-                cookie_pairs = cookies.split("; ")
-                for cookie in cookie_pairs:
-                    key, value = cookie.split("=", 1)
-                    driver.add_cookie({"name": key, "value": value, "domain": "tiktok.com"})
+                print(ssid)
+                driver.add_cookie(session_id)
+                driver.refresh()
+                time.sleep(2)
                     
-                print(self.systemNoiti + Fore.CYAN + f"{browser_name}: " + Fore.WHITE + "Đợi đăng nhập...")
+                print(self.systemNoiti + Fore.CYAN + f"{browser_name}: " + Fore.WHITE + "Waiting for login...")
                 print("--------------------------------------------------------------------------------")
                 print(Style.RESET_ALL)
                 
             except:
-                print(self.error + Fore.YELLOW + "Lỗi cookie!")
+                print(self.error + Fore.YELLOW + "Cookie Error!")
                 print(Style.RESET_ALL)
                 
             video = video_files.pop(0)
@@ -70,11 +61,11 @@ class upload_videos:
                 config = toml.load(config_file)
                 
             driver.get("https://www.tiktok.com/creator-center/upload?from=upload&lang=en")
-            driver.refresh()
+            time.sleep(2)
             
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             
-            print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE +  "Bắt đầu đăng video!")
+            print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE +  "Start Upload Video!")
         
             time.sleep(5)
             
@@ -93,8 +84,8 @@ class upload_videos:
                     break
                 except:
                     with open('./cookie_block.txt', "w") as ck:
-                        ck.writelines(cookies)
-                    print(self.error + Fore.YELLOW + f"{browser_name}" + Fore.WHITE + "Tài khoản bị khoá chức năng đăng bài!")
+                        ck.writelines(ssid)
+                    print(self.error + Fore.YELLOW + f"{browser_name}" + Fore.WHITE + "The account is locked from posting!")
                     print("--------------------------------------------------------------------------------")
                     if retry_count == MAX_RETRY - 1:
                         print(f"Reached maximum retry count ({MAX_RETRY}). Exiting.")
@@ -102,7 +93,7 @@ class upload_videos:
                     print(f"Retrying... (Attempt {retry_count + 1})")
                     
             if not video_files:
-                print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE + "Đã hết video. Thoát chương trình!")
+                print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE + "The video has ended. Exit the program!")
                 print(Style.RESET_ALL)
                 break
             
@@ -144,14 +135,12 @@ class upload_videos:
                     EC.presence_of_element_located((By.XPATH, '//span[text()="Caption"]'))
                 )
                 move_out_elm_eng.click(move_out_elm_eng)
-            
-            success_flag = False
                 
             try:
                 post = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.XPATH, config['selectors']['upload']['post'])))
                 post.send_keys(Keys.END)
                 post.click()
-                print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE + "Video đang được đăng, vui lòng đợi!")
+                print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE + "The video is being uploaded. Please wait!")
                 print("--------------------------------------------------------------------------------")
                 print(Style.RESET_ALL)
                 post_confirmation = EC.presence_of_element_located(
@@ -161,7 +150,7 @@ class upload_videos:
             except:
                 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
                 driver.execute_script('document.querySelector(".btn-post > button").click()')
-                print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE + "Video đang được đăng, vui lòng đợi!")
+                print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE + "The video is currently being uploaded. Please wait!")
                 print("--------------------------------------------------------------------------------")
                 print(Style.RESET_ALL)
                 post_confirmation = EC.presence_of_element_located(
@@ -169,21 +158,20 @@ class upload_videos:
                     )
                 WebDriverWait(driver, 60).until(post_confirmation)
                 
-            success_flag = True
-            print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE + f"Đã đăng video: {video}")
+            print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE + f"The video has been posted: {video}")
             print("--------------------------------------------------------------------------------")
             print(Style.RESET_ALL)
             
             try:
                 minute_time = wait_time * 60
                 print("--------------------------------------------------------------------------------")
-                print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE + f"Đợi {wait_time} giây trước khi tiếp tục...")
+                print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE + f"Please wait for {wait_time} seconds before continuing...")
                 print(Style.RESET_ALL)
             except:
                 wait_time_int = int(wait_time)
                 minute_time = wait_time_int * 60
                 print("--------------------------------------------------------------------------------")
-                print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE + f"Đợi {wait_time_int} giây trước khi tiếp tục...")
+                print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE + f"Please wait for {wait_time_int} seconds before continuing...")
                 print(Style.RESET_ALL)
                 
             print(Style.RESET_ALL)

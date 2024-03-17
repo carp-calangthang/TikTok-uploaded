@@ -1,31 +1,27 @@
-from selenium.common.exceptions import ElementClickInterceptedException, TimeoutException
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from seleniumwire import webdriver
-from colorama import Fore, Style
-import threading
-import pyautogui
-import shutil
-import queue
+from selenium import webdriver
 import time
-import toml
-import sys
-import os
 
-class run_with_cookie:
-    def __init__(self):
-        self.all_cookies_used = False
-        self.adminNoiti = Fore.CYAN + "Admin: "
-        self.systemNoiti = Fore.GREEN + "System: "
-        self.browserNoiti = Fore.MAGENTA + "Browser "
-        self.warning = Fore.YELLOW + "Warn: "   
-        self.error = Fore.RED + "Error: "
-        print(self.adminNoiti + Fore.WHITE + "Enter Video Caption: ")
-        self.caption = input()
-        
-    def check_cookie(self):
-        return not self.all_cookies_used
+# Khởi tạo trình duyệt
+driver = webdriver.Chrome()
+
+# Tạo một dictionary chứa session ID
+session_id = {'name': 'sessionid', 'value': 'cad813be4f5d43746dc04030a2d8701b'}
+
+# Mở trang web cần đăng nhập
+driver.get("https://www.tiktok.com/")
+
+# Thêm session ID vào trình duyệt
+driver.add_cookie(session_id)
+
+# Tải lại trang để áp dụng cookie
+driver.refresh()
+
+# Kiểm tra xem đã đăng nhập thành công hay không
+# (Bạn cần cung cấp cách xác định đăng nhập thành công dựa trên trang web)
+# Ví dụ: logged_in = driver.find_element_by_xpath("//some_xpath_expression").text
+# print(logged_in)
+
+time.sleep(50)
+
+# Đóng trình duyệt
+driver.quit()

@@ -1,25 +1,25 @@
 import os
 
-class check_cookies:
+class check_ssid:
     
     def __init__(self):
         self.script_path = os.path.abspath(__file__) 
         self.src_directory = os.path.dirname(self.script_path)
-        self.cookie_path = os.path.join(self.src_directory, '..', 'data', 'cookies.txt')
+        self.ssid_path = os.path.join(self.src_directory, '..', 'data', 'ssid.txt')
     
-    def check_null_cookies(self):
+    def check_null_ssid(self):
 
-        with open(self.cookie_path, "r") as cks:
-            cookies = cks.readlines()
+        with open(self.ssid_path, "r") as cks:
+            ssids = cks.readlines()
 
-        return bool(cookies)
+        return bool(ssids)
 
-    def check_len_cookies(self, len_cookies):
+    def check_len_ssids(self, len_ssids):
 
-        with open(self.cookie_path, "r") as cks:
-            cookies = cks.readlines()
+        with open(self.ssid_path, "r") as cks:
+            ssids = cks.readlines()
 
-        if len(cookies) >= len_cookies:
+        if len(ssids) >= len_ssids:
             return True
         else:
             return False
