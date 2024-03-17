@@ -52,10 +52,6 @@ Or you can manually install according to the following steps (If you have alread
 ```bash
   python Tiktok.py
 ```
-# Authors
-
-- [@carp](https://github.com/carp-calangthang)
-
 ## Contact
 - <a href="https://t.me/it_is_daijobu" target="blank"><img align="center" src="https://raw.githubusercontent.com/svg-image-stograge/svg-stograge/main/telegram.svg" alt="https://t.me/it_is_daijobu" height="30" width="40" /></a>
 - <a href="https://www.facebook.com/cacodelinhtinh/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg" alt="https://www.facebook.com/cacodelinhtinh/" height="30" width="40" /></a>
