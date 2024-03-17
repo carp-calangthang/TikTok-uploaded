@@ -43,10 +43,7 @@ Or you can manually install according to the following steps (If you have alread
 ### 1. Configure the tool
 - Add Your session id to <b>ssid.txt</b> in <b>data Folder</b>
 
-### 2. Add proxy
-- Add your proxy to the <b>proxies.txt</b> file
-
-### 3. Run the tool
+### 2. Run the tool
 - Run Tiktok Bot.cmd
 #### or run this command
 ```bash
