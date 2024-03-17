@@ -1,5 +1,6 @@
 # TikTok Uploaded 🎵
 Automatic tool for bulk uploading videos to TikTok. <b> Please do not commercialize in any form! </b>
+#tiktok-upload, #tiktok-bot, #automation_tiktok, #selenium, #python
 
 ![image](https://github.com/carp-calangthang/TikTok-uploaded/assets/90557694/0c5141b3-38da-4a82-a0d1-a971350b14bd)
 
