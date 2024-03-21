@@ -1,27 +1,36 @@
-from selenium import webdriver
-import time
+import datetime
+import webbrowser
 
-# Khởi tạo trình duyệt
-driver = webdriver.Chrome()
+def get_user_input():
+    print("Nhập các giờ bạn muốn kiểm tra (nhập done để kết thúc):")
+    hours = []
+    while True:
+        user_input = input("Nhập giờ và phút (hh:mm): ")
+        if user_input.lower() == 'done':
+            break
+        try:
+            user_time = datetime.datetime.strptime(user_input, "%H:%M")
+            hours.append((user_time.hour, user_time.minute))
+        except ValueError:
+            print("Thời gian không hợp lệ. Vui lòng nhập lại.")
+    return hours
 
-# Tạo một dictionary chứa session ID
-session_id = {'name': 'sessionid', 'value': 'cad813be4f5d43746dc04030a2d8701b'}
+def check_hours(user_hours):
+    while True:
+        current_time = datetime.datetime.now()
+        current_hour = current_time.hour
+        current_minute = current_time.minute
+        for hour, minute in user_hours:
+            if current_hour == hour and current_minute == minute:
+                print(f"Bây giờ là {hour}:{minute}! Mở YouTube...")
+                webbrowser.open("https://www.youtube.com")
+                user_hours.remove((hour, minute))  # Đảm bảo chỉ mở một lần khi giờ trùng
+        if not user_hours:
+            print("Đã kiểm tra hết các giờ bạn nhập.")
+            break
 
-# Mở trang web cần đăng nhập
-driver.get("https://www.tiktok.com/")
-
-# Thêm session ID vào trình duyệt
-driver.add_cookie(session_id)
-
-# Tải lại trang để áp dụng cookie
-driver.refresh()
-
-# Kiểm tra xem đã đăng nhập thành công hay không
-# (Bạn cần cung cấp cách xác định đăng nhập thành công dựa trên trang web)
-# Ví dụ: logged_in = driver.find_element_by_xpath("//some_xpath_expression").text
-# print(logged_in)
-
-time.sleep(50)
-
-# Đóng trình duyệt
-driver.quit()
+if __name__ == "__main__":
+    user_hours = get_user_input()
+    check_hours(user_hours)
+    
+    
