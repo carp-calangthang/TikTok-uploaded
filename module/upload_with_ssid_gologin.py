@@ -1,11 +1,16 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+
 from colorama import Fore, Style
 from seleniumwire import webdriver
 from module.get_videos_module import get_video_files
+from gologin import GoLogin
+from gologin import getRandomPort
+from sys import platform
 import random
 import time
 import toml
@@ -19,25 +24,31 @@ class upload_videos:
         self.warning = Fore.YELLOW + "Warn: "   
         self.error = Fore.RED + "Error: "
         
+        self.gl = GoLogin({
+            "token": "",
+            "profile_id": "",
+            # "port": random_port
+        })
+        
     def run_upload_videos(self, ssid, caption, wait_time, browser_name):
         
-        options = webdriver.FirefoxOptions()
+        if platform == "linux" or platform == "linux2":
+            chrome_driver_path = "./chromedriver"
+        elif platform == "darwin":
+            chrome_driver_path = "./mac/chromedriver"
+        elif platform == "win32":
+            chrome_driver_path = "chromedriver.exe"
+            
+        debugger_address = self.gl.start()
+        chrome_options = Options()
+        chrome_options.add_experimental_option("debuggerAddress", debugger_address)
+        driver = webdriver.Chrome(executable_path=chrome_driver_path, options=chrome_options)
         
         # seleniumwire_options = {
         #     'proxy': {
         #         'http': 'http://VN359136:Tadcha2@103.89.89.75:56788',
         #     },
         # }
-        
-        #options.add_argument('--headless')
-        options.add_argument('--lang=en')
-        options.add_argument('--disable-notifications')
-        options.add_argument('--disable-popup-blocking')
-        options.add_argument('--disable-extensions')
-        options.add_argument('--enable-automation')
-        options.add_argument('--ignore-certificate-errors') 
-        options.add_argument("--disable-blink-features=AutomationControlled")
-        driver = webdriver.Firefox(options=options, ) #seleniumwire_options=seleniumwire_options
             
         video_files = get_video_files()
         print(video_files)

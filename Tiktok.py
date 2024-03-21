@@ -1,5 +1,4 @@
 import os
-import time
 from colorama import Fore, Style
 from multiprocessing import Process
 from module.load_proxy_module import load_proxies
@@ -74,7 +73,7 @@ if __name__ == "__main__":
                 ssid_file.writelines([])
                 
         elif not check_null:
-            print(adminNoiti + Fore.WHITE + "The program has stopped working because all cookies have been used up")
+            print(adminNoiti + Fore.WHITE + "The program has stopped working because all ssid have been used up")
             break
         
         # proxy = "hanoi106.proxy.mkvn.net:10168:gj28X:89198"

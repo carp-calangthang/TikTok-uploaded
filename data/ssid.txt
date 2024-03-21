@@ -1,2 +1,25 @@
-cad813be4f5d43746dc04030a2d8701b
-cad813be4f5d43746dc04030a2d8701b
+da9ab88f1bcffa749dd62199e36a2475
+da9ab88f1bcffa749dd62199e36a2475
+da9ab88f1bcffa749dd62199e36a2475
+da9ab88f1bcffa749dd62199e36a2475
+
+
+error removing profile C:\Users\ADMIN\AppData\Local\Temp\gologin_65f83bd45340a40d0f580d59
+downloadProfileZip
+data is 0 - creating fresh profile content
+createEmptyProfile
+extracting profile
+exception [Errno 13] Permission denied: 'C:\\Users\\ADMIN\\AppData\\Local\\Temp\\gologin_65f83bd45340a40d0f580d59\\Default\\Network\\Cookies'
+uploadEmptyProfile
+createEmptyProfile
+Process Process-3:
+Traceback (most recent call last):
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python310\lib\site-packages\gologin\gologin.py", line 327, in downloadProfileZip
+    self.extractProfileZip()
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python310\lib\site-packages\gologin\gologin.py", line 396, in extractProfileZip
+    zip_ref.extractall(self.profile_path)
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python310\lib\zipfile.py", line 1645, in extractall
+    self._extract_member(zipinfo, path, pwd)
+  File "C:\Users\ADMIN\AppData\Local\Programs\Python\Python310\lib\zipfile.py", line 1699, in _extract_member
+    open(targetpath, "wb") as target:
+PermissionError: [Errno 13] Permission denied: 'C:\\Users\\ADMIN\\AppData\\Local\\Temp\\gologin_65f83bd45340a40d0f580d59\\Default\\Network\\Cookies'
