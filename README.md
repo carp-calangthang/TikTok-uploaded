@@ -55,6 +55,13 @@ Or you can manually install according to the following steps (If you have alread
 - <a href="https://www.facebook.com/cacodelinhtinh/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg" alt="https://www.facebook.com/cacodelinhtinh/" height="30" width="40" /></a>
 - Email: nguyentrananhkhoa.wf@gmail.com
 
+# Change webdriver to gologin
+1. Open ``upload_with_ssid_gologin.py`` with some python IDE or text editor
+2. Enter the token and profile id and save it
+![image](https://github.com/carp-calangthang/TikTok-uploaded/assets/90557694/35b2d467-18e6-4380-a503-096e9f3fb126)
+3. Run tool and choose 1
+
+
 # Authors
 - [@carp](https://github.com/carp-calangthang)
 - [@firet](https://github.com/firetofficial)
