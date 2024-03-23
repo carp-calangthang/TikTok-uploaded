@@ -1,5 +1,5 @@
 
-ssid = "da9ab88f1bcffa749dd62199e36a2475"
+ssid = ""
 
 user = ssid.split(" ")[0]
 ssid_list = user[:4]
