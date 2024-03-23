@@ -13,16 +13,9 @@ print("-------------------------------------------------------------------------
 print("---------------------------------------------------------------------------- \n")
 
 def get_c_user_from_cookie(ssid):
-    start_index = ssid.find("csrf_session_id=")
-    if start_index != -1:
-        end_index = ssid.find(";", start_index)
-        if end_index == -1:
-            end_index = None
-        c_user_value = ssid[start_index + len("csrf_session_id="):end_index]
-        print(c_user_value)
-        return c_user_value
-    else:
-        return None
+    user = ssid.split(" ")[0]
+    user_name = user[:6]
+    return user_name
 
 def run_process(ssid, caption, wait_time, browser_name):
     process_action = upload_videos()
@@ -84,8 +77,6 @@ if __name__ == "__main__":
         elif not check_null:
             print(adminNoiti + Fore.WHITE + "The program has stopped working because all ssid have been used up")
             break
-        
-        # proxy = "hanoi106.proxy.mkvn.net:10168:gj28X:89198"
         
         for ssid in ssid_list:
             ssid_login = ssid.strip()

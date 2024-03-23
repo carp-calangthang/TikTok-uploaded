@@ -19,15 +19,9 @@ class upload_videos:
         self.warning = Fore.YELLOW + "Warn: "   
         self.error = Fore.RED + "Error: "
         
-    def run_upload_videos(self, ssid, caption, wait_time, browser_name):
+    def run_upload_videos(self, ssid, caption, wait_time, process_name):
         
         options = webdriver.FirefoxOptions()
-        
-        # seleniumwire_options = {
-        #     'proxy': {
-        #         'http': 'http://VN359136:Tadcha2@103.89.89.75:56788',
-        #     },
-        # }
         
         #options.add_argument('--headless')
         options.add_argument('--lang=en')
@@ -37,7 +31,7 @@ class upload_videos:
         options.add_argument('--enable-automation')
         options.add_argument('--ignore-certificate-errors') 
         options.add_argument("--disable-blink-features=AutomationControlled")
-        driver = webdriver.Firefox(options=options, ) #seleniumwire_options=seleniumwire_options
+        driver = webdriver.Firefox(options=options, )
             
         video_files = get_video_files()
         print(video_files)
@@ -55,7 +49,7 @@ class upload_videos:
                 driver.refresh()
                 time.sleep(2)
                     
-                print(self.systemNoiti + Fore.CYAN + f"{browser_name}: " + Fore.WHITE + "Waiting for login...")
+                print(self.systemNoiti + Fore.CYAN + f"{process_name}: " + Fore.WHITE + "Waiting for login...")
                 print("--------------------------------------------------------------------------------")
                 print(Style.RESET_ALL)
                 
@@ -78,7 +72,7 @@ class upload_videos:
             
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             
-            print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE +  "Start Upload Video!")
+            print(self.systemNoiti + Fore.CYAN + f"{process_name}" + Fore.WHITE +  "Start Upload Video!")
             
             iframe_selector = EC.presence_of_element_located(
                 (By.XPATH, config['selectors']['upload']['iframe'])
@@ -94,7 +88,7 @@ class upload_videos:
                 EC.presence_of_element_located((By.XPATH, config['selectors']['upload']['upload_video']))
             )
             upload_box.send_keys(videos_path + "\\" + video)
-            print(f"{self.systemNoiti}" + Fore.CYAN + f"{browser_name}: Upload: {video}")
+            print(f"{self.systemNoiti}" + Fore.CYAN + f"{process_name}: Upload: {video}")
             print("--------------------------------------------------------------------------------")
             print(Style.RESET_ALL)
             time.sleep(random.randint(3, 5))
@@ -108,7 +102,7 @@ class upload_videos:
             WebDriverWait(driver, config['explicit_wait']).until(upload_confirmation)
             
             process_confirmation = EC.presence_of_element_located((By.XPATH, config['selectors']['upload']['process_confirmation']))
-            WebDriverWait(driver, config['explicit_wait']).until(process_confirmation)  
+            WebDriverWait(driver, config['explicit_wait']).until(process_confirmation)
             
             try:
                 desc = wait.until(EC.presence_of_element_located((By.XPATH, config['selectors']['upload']['description'])))
@@ -126,7 +120,7 @@ class upload_videos:
                 post = WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.XPATH, config['selectors']['upload']['post'])))
                 post.send_keys(Keys.END)
                 post.click()
-                print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE + "The video is being uploaded. Please wait!")
+                print(self.systemNoiti + Fore.CYAN + f"{process_name}" + Fore.WHITE + "The video is being uploaded. Please wait!")
                 print("--------------------------------------------------------------------------------")
                 print(Style.RESET_ALL)
                 post_confirmation = EC.presence_of_element_located(
@@ -137,7 +131,7 @@ class upload_videos:
                 time.sleep(random.randint(3, 10))  
                 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
                 driver.execute_script('document.querySelector(".btn-post > button").click()')
-                print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE + "The video is currently being uploaded. Please wait!")
+                print(self.systemNoiti + Fore.CYAN + f"{process_name}" + Fore.WHITE + "The video is currently being uploaded. Please wait!")
                 print("--------------------------------------------------------------------------------")
                 print(Style.RESET_ALL)
                 post_confirmation = EC.presence_of_element_located(
@@ -146,22 +140,28 @@ class upload_videos:
                 WebDriverWait(driver, 60).until(post_confirmation)
                 
             time.sleep(random.randint(3, 5))
-            print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE + f"The video has been posted: {video}")
+            print(self.systemNoiti + Fore.CYAN + f"{process_name}" + Fore.WHITE + f"The video has been posted: {video}")
             print("--------------------------------------------------------------------------------")
             print(Style.RESET_ALL)
             
             try:
                 minute_time = wait_time * 60
                 print("--------------------------------------------------------------------------------")
-                print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE + f"Please wait for {minute_time} seconds before continuing...")
+                print(self.systemNoiti + Fore.CYAN + f"{process_name}" + Fore.WHITE + f"Please wait for {minute_time} seconds before continuing...")
                 print(Style.RESET_ALL)
             except:
                 wait_time_int = int(wait_time)
                 minute_time = wait_time_int * 60
                 print("--------------------------------------------------------------------------------")
-                print(self.systemNoiti + Fore.CYAN + f"{browser_name}" + Fore.WHITE + f"Please wait for {wait_time_int} seconds before continuing...")
+                print(self.systemNoiti + Fore.CYAN + f"{process_name}" + Fore.WHITE + f"Please wait for {wait_time_int} seconds before continuing...")
                 print(Style.RESET_ALL)
                 
             print(Style.RESET_ALL)
             time.sleep(random.randint(3, 5))
             time.sleep(minute_time)
+            
+            if not video_files:
+                print(self.systemNoiti + Fore.CYAN + f"{process_name}" + Fore.WHITE + "All videos have been uploaded!")
+                print("--------------------------------------------------------------------------------")
+                print(Style.RESET_ALL)
+                break
