@@ -5,7 +5,6 @@ from module.load_proxy_module import load_proxies
 from module.check_data_module import check_ssid
 from module.load_ssid_module import load_ssid
 from module.upload_with_ssid import upload_videos
-from module.upload_with_ssid_gologin import upload_videos as upload_videos_gologin
 
 os.system("cls")
 print("---------------------------------------------------------------------------- \n")
@@ -23,12 +22,6 @@ def run_process(ssid, caption, wait_time, browser_name):
     browser_name_with_c_user = f"{browser_name}: {c_user} "
     process_action.run_upload_videos(ssid, caption, wait_time, browser_name_with_c_user)
     
-def run_with_gologin(ssid, caption, wait_time, browser_name):
-    process_action = upload_videos_gologin()
-    c_user = get_c_user_from_cookie(ssid)
-    browser_name_with_c_user = f"{browser_name}: {c_user} "
-    process_action.run_upload_videos(ssid, caption, wait_time, browser_name_with_c_user)
-    
 if __name__ == "__main__":
     adminNoiti = Fore.CYAN + "Admin: "
     systemNoiti = Fore.GREEN + "System: "
@@ -40,8 +33,6 @@ if __name__ == "__main__":
     src_directory = os.path.dirname(script_path)
     ssid_path = os.path.join(src_directory, 'data', 'ssid.txt')
     
-    print(adminNoiti + Fore.WHITE + "Choose 1 to using gologin and 2 to using webdriver: ")
-    browser_choose = input()
     print(adminNoiti + Fore.WHITE + "Caption: ")
     caption = input()
     print(adminNoiti + Fore.WHITE + "Time(min): ")
@@ -80,19 +71,10 @@ if __name__ == "__main__":
         
         for ssid in ssid_list:
             ssid_login = ssid.strip()
-            
-            if browser_choose == "1":
-                process = Process(target=run_with_gologin, args=(ssid_login, caption, wait_time, browser_name))
-                processes.append(process)
-                process.start()
-            elif browser_choose == "2":
-                process = Process(target=run_process, args=(ssid_login, caption, wait_time, browser_name))
-                processes.append(process)
-                process.start()
-            else:
-                print(error + Fore.WHITE + "Please choose 1 or 2")
-                print(Style.RESET_ALL)
-                break
+            browser_choose == "2":
+            process = Process(target=run_process, args=(ssid_login, caption, wait_time, browser_name))
+            processes.append(process)
+            process.start()
             
         for process in processes:
             process.join()
