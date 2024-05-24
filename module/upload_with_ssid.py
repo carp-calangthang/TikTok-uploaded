@@ -34,7 +34,6 @@ class upload_videos:
         driver = webdriver.Firefox(options=options, )
             
         video_files = get_video_files()
-        print(video_files)
         
         while video_files:
             
@@ -44,7 +43,6 @@ class upload_videos:
             driver.get(url)
             
             try:
-                print(ssid)
                 driver.add_cookie(session_id)
                 driver.refresh()
                 time.sleep(2)

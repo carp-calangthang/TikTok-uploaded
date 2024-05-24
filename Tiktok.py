@@ -1,16 +1,13 @@
 import os
+import time
 from colorama import Fore, Style
 from multiprocessing import Process
 from module.load_proxy_module import load_proxies
 from module.check_data_module import check_ssid
 from module.load_ssid_module import load_ssid
-from module.upload_with_ssid import upload_videos
-from module.upload_with_ssid_gologin import upload_videos as upload_videos_gologin
+from module.upload_with_ssid_uc  import upload_videos_uc
 
 os.system("cls")
-print("---------------------------------------------------------------------------- \n")
-print("---------------------------------------------------------------------------- \n")
-print("---------------------------------------------------------------------------- \n")
 
 def get_c_user_from_cookie(ssid):
     user = ssid.split(" ")[0]
@@ -18,13 +15,7 @@ def get_c_user_from_cookie(ssid):
     return user_name
 
 def run_process(ssid, caption, wait_time, browser_name):
-    process_action = upload_videos()
-    c_user = get_c_user_from_cookie(ssid)
-    browser_name_with_c_user = f"{browser_name}: {c_user} "
-    process_action.run_upload_videos(ssid, caption, wait_time, browser_name_with_c_user)
-    
-def run_with_gologin(ssid, caption, wait_time, browser_name):
-    process_action = upload_videos_gologin()
+    process_action = upload_videos_uc()
     c_user = get_c_user_from_cookie(ssid)
     browser_name_with_c_user = f"{browser_name}: {c_user} "
     process_action.run_upload_videos(ssid, caption, wait_time, browser_name_with_c_user)
@@ -40,8 +31,6 @@ if __name__ == "__main__":
     src_directory = os.path.dirname(script_path)
     ssid_path = os.path.join(src_directory, 'data', 'ssid.txt')
     
-    print(adminNoiti + Fore.WHITE + "Choose 1 to using gologin and 2 to using webdriver: ")
-    browser_choose = input()
     print(adminNoiti + Fore.WHITE + "Caption: ")
     caption = input()
     print(adminNoiti + Fore.WHITE + "Time(min): ")
@@ -81,18 +70,11 @@ if __name__ == "__main__":
         for ssid in ssid_list:
             ssid_login = ssid.strip()
             
-            if browser_choose == "1":
-                process = Process(target=run_with_gologin, args=(ssid_login, caption, wait_time, browser_name))
-                processes.append(process)
-                process.start()
-            elif browser_choose == "2":
-                process = Process(target=run_process, args=(ssid_login, caption, wait_time, browser_name))
-                processes.append(process)
-                process.start()
-            else:
-                print(error + Fore.WHITE + "Please choose 1 or 2")
-                print(Style.RESET_ALL)
-                break
+            process = Process(target=run_process, args=(ssid_login, caption, wait_time, browser_name))
+            processes.append(process)
+            process.start()
             
         for process in processes:
             process.join()
+            
+        time.sleep(10000)
